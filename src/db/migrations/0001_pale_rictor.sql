@@ -1,0 +1,1 @@
+ALTER TABLE "gold_store" ADD COLUMN "jewelryType" varchar(255) NOT NULL;
