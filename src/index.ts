@@ -1,5 +1,7 @@
 import express, { Request, Response } from "express";
+
 import goldStoreRoutes from "./routes/goldStore.routes";
+import orderRoutes from "./routes/order.routes";
 import { loggerMiddleware } from "./middlewares/logger.middlewares";
 
 const app = express();
@@ -20,6 +22,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/api/v1", goldStoreRoutes);
+app.use("/api/v1", orderRoutes);
 
 const server = app.listen(5000, () => {
   console.log("Server is running on port 5000");

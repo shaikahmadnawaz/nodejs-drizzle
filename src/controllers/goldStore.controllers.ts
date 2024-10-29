@@ -34,6 +34,29 @@ export const getGoldItems = async (req: Request, res: Response) => {
   }
 };
 
+export const getGoldItemById = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const { id } = req.params;
+
+    const item = await db
+      .select()
+      .from(goldStoreTable)
+      .where(eq(goldStoreTable.id, parseInt(id)));
+
+    if (item.length === 0) {
+      res.status(404).json({ error: "Jewelry item not found" });
+    }
+
+    res.status(200).json({ item: item[0], message: "Jewelry item retrieved!" });
+  } catch (error) {
+    console.error("Error fetching jewelry item:", error);
+    res.status(500).json({ error: "Failed to retrieve jewelry item" });
+  }
+};
+
 export const updateGoldItem = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
