@@ -20,7 +20,7 @@ export const goldStoreTable = pgTable("gold_store", {
   jewelryType: varchar("jewelry_type", { length: 255 }).notNull(),
 });
 
-export const orderTable = pgTable("order_table", {
+export const orderTable = pgTable("order", {
   id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
   orderDate: timestamp("order_date").defaultNow(),
   quantity: integer("quantity").notNull(),
